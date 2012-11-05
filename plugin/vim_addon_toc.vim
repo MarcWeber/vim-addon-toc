@@ -10,8 +10,8 @@ let s:c.php = get(s:c, 'php', {'vim': '^\(\%(static\|public\|abstract\|protected
 let s:c.ruby = get(s:c, 'ruby', {'vim': '^\s*\%(def\|class\)'})
 let s:c.ant = get(s:c, 'ant', {'vim': '^\s*<target'})
 let s:c.sql = get(s:c, 'sql', {'vim': '^\s*\c\%(\SELECT\|CREATE\|UPDATE\|DESCRIBE\|DROP\|ALTER\|INSERT\).*'})
-let s:c.perl = get(s:c, 'perl', {'vim': '^\s*sub' " this is a stub})
-let s:c.python = get(s:c, 'python', {'vim': '^\s*\%(def\|class\)' " this is a stub})
+let s:c.perl = get(s:c, 'perl', {'vim': '^\s*sub'})
+let s:c.python = get(s:c, 'python', {'vim': '^\s*\%(def\|class\)'})
 let s:c.haskell = get(s:c, 'haskell', {'vim': '^\s*\%(\%(\zs\%(where\)\@!\%(\l\w*\)\ze\%(\s\+\%(\S\+\)\)*\s*=\)\|\%(\%(\S\+\)\s*`\zs\%(where\)\@!\%(\l\w*\)\ze`\s*\%(\S\+\)\s*=\)\)'})
 let s:c.javascript = get(s:c, 'javascript', {'vim': 'function'})
 " actionscript isn't prfect yet ..

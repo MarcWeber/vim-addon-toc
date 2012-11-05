@@ -27,7 +27,7 @@ fun! vim_addon_toc#ToC(regex)
     let lines = []
     let r = has_key(a:regex,'grep') ? a:regex.grep : vim_addon_toc#VimRegexToGrepRegex(a:regex.vim)
 
-    let cmd = 'grep -ne '.escape(r,'*|\ !$%[]()^')
+    let cmd = 'grep -ne '.escape(r,'*|\ !$%[]()^'."'\"")
 
     let tmp = tempname()
     exec 'w ! '.cmd.' > '.tmp
