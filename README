@@ -1,0 +1,6 @@
+fast overview about the current buffer (by regex)
+some special regexes are defined for quite some languages
+
+related work: ttoc plugin, you may want to give that a try, too
+
+For speed grep and w ! is used if system('grep --help') suceeds.
