@@ -8,26 +8,44 @@ fun! vim_addon_toc#ToCFiletype()
   endif
 endfun
 
+" see vim_addon_regex?
 fun! vim_addon_toc#VimRegexToGrepRegex(regex)
   " yes, this is horribly incomplete
   let s = a:regex
+  let flags = ''
+  let warnings = []
+
+  " support \c at the beginning
+  if s =~ '^\\c'
+    let flags = '-i'
+    let s = s[2:]
+  endif
+
+  if s =~ '\\[VCc]'
+    call add(warnings, 'unsupported modifier found')
+  endif
+
   for x in ['\\%(=>\\(', '\\s=>[ \\t]', '\\+=>+','\\S=>[^ \\t]']
     let m = split(x,'=>')
     let s = substitute(s, m[0], m[1], 'g')
   endfor
-  return s
+  return {'regex_grep': s, 'flags': flags, 'warnings': warnings}
 endf
 
 fun! vim_addon_toc#ToC(regex)
   call system('grep --help')
   let cursorAt = -1
   let curr_line = line('.')
-  if v:shell_error == 0
+
+  let r_grep = has_key(a:regex, 'regex_grep') ? a:regex : vim_addon_toc#VimRegexToGrepRegex(a:regex.vim)
+
+  if v:shell_error == 0 && empty(r_grep.warnings)
     " use grep implementation for speed
     let lines = []
-    let r = has_key(a:regex,'grep') ? a:regex.grep : vim_addon_toc#VimRegexToGrepRegex(a:regex.vim)
+    " yes \c is only supported if its first - this is a hack. does grep
+    " support \c modifier?
 
-    let cmd = 'grep -ne '.escape(r,'*|\ !$%[]()^'."'\"")
+    let cmd = 'grep '. r_grep.flags .' -ne '.escape(r_grep.regex_grep, '*|\ !$%[]()^'."'\"")
 
     let tmp = tempname()
     exec 'w ! '.cmd.' > '.tmp

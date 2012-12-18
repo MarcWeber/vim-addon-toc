@@ -6,7 +6,7 @@ let s:c.lhs_by_ft = get(s:c, 'lhs_by_ft', '<m-t><m-o>')
 " the (e)grep regex will be created from the vim regex if its not set
 let s:c.js = get(s:c, 'js', {'vim': '\%(\<function\>\|\<Class\>\|^var\>\|^\S\+\s\)'})
 let s:c.vim = get(s:c, 'vim', {'vim': '^\s*\%(fun\|com\|au\S*\)'})
-let s:c.php = get(s:c, 'php', {'vim': '^\(\%(static\|public\|abstract\|protected\|private\)\s\+\)*\%(function\|class\)'})
+let s:c.php = get(s:c, 'php', {'vim': '^\s*\(\%(static\|public\|abstract\|protected\|private\)\s\+\)*\%(function\|class\)'})
 let s:c.ruby = get(s:c, 'ruby', {'vim': '^\s*\%(def\|class\)'})
 let s:c.ant = get(s:c, 'ant', {'vim': '^\s*<target'})
 let s:c.sql = get(s:c, 'sql', {'vim': '^\s*\c\%(\SELECT\|CREATE\|UPDATE\|DESCRIBE\|DROP\|ALTER\|INSERT\).*'})
