@@ -17,6 +17,7 @@ let s:c.javascript = get(s:c, 'javascript', {'vim': 'function'})
 " actionscript isn't prfect yet ..
 let s:c.actionscript = get(s:c, 'actionscript', {'vim': 'private\|public\|include\|class\|interface\|propert\%(y\|ies\)'})
 let s:c.make = get(s:c, 'make', {'vim': '^[^: ]\+\s*:.*\|include'})
+let s:c.haxe = get(s:c, 'haxe', {'vim': 'class\|function\|enum\|typedef'})
 
 
 exec 'noremap '.s:c.lhs_by_regex .' :call vim_addon_toc#ToC({"vim": input("regex for toc:")})<cr>'
