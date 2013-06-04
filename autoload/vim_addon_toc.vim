@@ -45,7 +45,7 @@ fun! vim_addon_toc#ToC(regex)
     " yes \c is only supported if its first - this is a hack. does grep
     " support \c modifier?
 
-    let cmd = 'grep '. r_grep.flags .' -ne '.escape(r_grep.regex_grep, '*|\ !$%[]()^'."'\"")
+    let cmd = 'grep '. r_grep.flags .' -ne '.escape(r_grep.regex_grep, '*|\ !$%[]()^<>'."'\"")
 
     let tmp = tempname()
     exec 'w ! '.cmd.' > '.tmp
