@@ -25,7 +25,7 @@ fun! vim_addon_toc#VimRegexToGrepRegex(regex)
     call add(warnings, 'unsupported modifier found')
   endif
 
-  for x in ['\\%(=>\\(', '\\s=>[ \\t]', '\\+=>+','\\S=>[^ \\t]']
+  for x in ['\\%(=>\\(', '\\s=>[ \\t]', '\\+=>+','\\S=>[^ \\t]','#=>\\#']
     let m = split(x,'=>')
     let s = substitute(s, m[0], m[1], 'g')
   endfor

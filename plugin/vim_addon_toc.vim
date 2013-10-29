@@ -1,7 +1,7 @@
 if !exists('g:vim_addon_toc') | let g:vim_addon_toc = {} | endif | let s:c = g:vim_addon_toc
 
-let s:c.lhs_by_regex = get(s:c, 'lhs_by_regex', '<m-r><m-o>')
-let s:c.lhs_by_ft = get(s:c, 'lhs_by_ft', '<m-t><m-o>')
+let s:c.lhs_by_regex = get(s:c, 'lhs_by_regex', '\ro')
+let s:c.lhs_by_ft = get(s:c, 'lhs_by_ft', '\to')
 
 " the (e)grep regex will be created from the vim regex if its not set
 let s:c.js = get(s:c, 'js', {'vim': '\%(\<function\>\|\<Class\>\|^var\>\|^\S\+\s\)'})
@@ -18,6 +18,7 @@ let s:c.javascript = get(s:c, 'javascript', {'vim': 'function'})
 let s:c.actionscript = get(s:c, 'actionscript', {'vim': 'private\|public\|include\|class\|interface\|propert\%(y\|ies\)'})
 let s:c.make = get(s:c, 'make', {'vim': '^[^: ]\+\s*:.*\|include'})
 let s:c.haxe = get(s:c, 'haxe', {'vim': 'class\|function\|enum\|typedef'})
+let s:c.ocaml = get(s:c, 'ocaml', {'vim': '^\s*\%(class\s\|method\s\|open\s\|module\s\|type\s\|let\s\|sig\s\|struct\s\)'})
 
 
 exec 'noremap '.s:c.lhs_by_regex .' :call vim_addon_toc#ToC({"vim": input("regex for toc:")})<cr>'
